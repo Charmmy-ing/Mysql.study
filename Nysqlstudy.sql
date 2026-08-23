@@ -302,3 +302,128 @@ mysql> show tables;
 
 mysql> exit
 Bye
+
+C:\Users\a'a'a>mysql -u root -p
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.34 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use canlu;
+Database changed
+mysql> creat table tb_user(
+    -> id int comment 'id',
+    -> name verchar(50) comment'name',
+    -> age int comment 'age',
+    -> gendert verchar(50) comment 'male'
+    -> )comment 'table';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'creat table tb_user(
+id int comment 'id',
+name verchar(50) comment'name',
+age in' at line 1
+mysql> creat table tb_user(
+    -> id int comment 'id',
+    -> name verchar(50) comment 'name',
+    -> age int comment 'age',
+    -> gender verchar(50) 'gender'
+    -> )comment 'table';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'creat table tb_user(
+id int comment 'id',
+name verchar(50) comment 'name',
+age i' at line 1
+mysql> ) comment 'table';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') comment 'table'' at line 1
+mysql> creat table tb_user(
+    -> id int comment 'id',
+    -> name verchar(50) comment 'name',
+    -> age int comment 'age',
+    -> gender verchar(50) 'gender'
+    -> ) comment 'table';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'creat table tb_user(
+id int comment 'id',
+name verchar(50) comment 'name',
+age i' at line 1
+mysql> creat table tb_user(
+    -> id int comment 'id',
+    -> name verchar(50) comment 'name',
+    -> age int comment 'age',
+    -> gender verchar(50) comment 'gender'
+    -> ) comment '注册表'；
+    -> ) comment '注册表';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'creat table tb_user(
+id int comment 'id',
+name verchar(50) comment 'name',
+age i' at line 1
+mysql> creat table tb_user(
+    -> id int comment 'id',
+    -> name verchar(50) comment 'name',
+    -> age int comment 'age',
+    -> gender verchar(50) comment 'gender'
+    -> ) comment '注册表';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'creat table tb_user(
+id int comment 'id',
+name verchar(50) comment 'name',
+age i' at line 1
+mysql>   ^C
+mysql> create table tb_user(
+    -> id int comment 'id',
+    -> name verchar(50) comment 'name',
+    -> age int comment 'age',
+    -> gender verchar(50) comment 'gender'
+    -> ) comment '注册表';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'verchar(50) comment 'name',
+age int comment 'age',
+gender verchar(50) comment 'g' at line 3
+mysql> ^C
+mysql> create table tb_user(
+    -> id int comment 'id',
+    -> name varchar(50) comment 'name',
+    -> age int comment 'age',
+    -> gender varchar(50) comment 'gender'
+    -> ) comment '注册表';
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
++-----------------+
+| Tables_in_canlu |
++-----------------+
+| tb_user         |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> desc tb_user
+    -> ;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | YES  |     | NULL    |       |
+| name   | varchar(50) | YES  |     | NULL    |       |
+| age    | int         | YES  |     | NULL    |       |
+| gender | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show create table tb_user;
++---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table   | Create Table                                                                                                                                                                                                                                                                                      |
++---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| tb_user | CREATE TABLE `tb_user` (
+  `id` int DEFAULT NULL COMMENT 'id',
+  `name` varchar(50) DEFAULT NULL COMMENT 'name',
+  `age` int DEFAULT NULL COMMENT 'age',
+  `gender` varchar(50) DEFAULT NULL COMMENT 'gender'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='注册表' |
++---------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.03 sec)
+
+mysql>
