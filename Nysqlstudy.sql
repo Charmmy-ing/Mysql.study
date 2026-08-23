@@ -427,3 +427,189 @@ mysql> show create table tb_user;
 1 row in set (0.03 sec)
 
 mysql>
+Microsoft Windows [版本 10.0.26200.9168]
+(c) Microsoft Corporation。保留所有权利。
+
+C:\Users\a'a'a>mysql -u root -p
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.34 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| canlu              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.02 sec)
+
+mysql> show canlu
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'canlu' at line 1
+mysql> use canlu
+Database changed
+mysql> show canlu
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'canlu' at line 1
+mysql> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> desc table
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> desc tables;
+ERROR 1146 (42S02): Table 'canlu.tables' doesn't exist
+mysql> show tables;
++-----------------+
+| Tables_in_canlu |
++-----------------+
+| emp             |
+| tb_user         |
++-----------------+
+2 rows in set (0.01 sec)
+
+mysql> desc emp;
++--------+------------------+------+-----+---------+-------+
+| Field  | Type             | Null | Key | Default | Extra |
++--------+------------------+------+-----+---------+-------+
+| id     | int unsigned     | YES  |     | NULL    |       |
+| workno | varchar(10)      | YES  |     | NULL    |       |
+| name   | varchar(10)      | YES  |     | NULL    |       |
+| gender | char(1)          | YES  |     | NULL    |       |
+| age    | tinyint unsigned | YES  |     | NULL    |       |
+| idcard | char(18)         | YES  |     | NULL    |       |
+| time   | date             | YES  |     | NULL    |       |
++--------+------------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> alter emp add nickname varchar(20) comment "昵称";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emp add nickname varchar(20) comment "昵称"' at line 1
+mysql> alter table emp add nickname varchar(20) comment "昵称";
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++----------+------------------+------+-----+---------+-------+
+| Field    | Type             | Null | Key | Default | Extra |
++----------+------------------+------+-----+---------+-------+
+| id       | int unsigned     | YES  |     | NULL    |       |
+| workno   | varchar(10)      | YES  |     | NULL    |       |
+| name     | varchar(10)      | YES  |     | NULL    |       |
+| gender   | char(1)          | YES  |     | NULL    |       |
+| age      | tinyint unsigned | YES  |     | NULL    |       |
+| idcard   | char(18)         | YES  |     | NULL    |       |
+| time     | date             | YES  |     | NULL    |       |
+| nickname | varchar(20)      | YES  |     | NULL    |       |
++----------+------------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> alter table emp change nickname username Varchar(20) comment "用户名"；
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '；' at line 1
+mysql> alter table emp change nickname username Varchar(20) comment "用户名";
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++----------+------------------+------+-----+---------+-------+
+| Field    | Type             | Null | Key | Default | Extra |
++----------+------------------+------+-----+---------+-------+
+| id       | int unsigned     | YES  |     | NULL    |       |
+| workno   | varchar(10)      | YES  |     | NULL    |       |
+| name     | varchar(10)      | YES  |     | NULL    |       |
+| gender   | char(1)          | YES  |     | NULL    |       |
+| age      | tinyint unsigned | YES  |     | NULL    |       |
+| idcard   | char(18)         | YES  |     | NULL    |       |
+| time     | date             | YES  |     | NULL    |       |
+| username | varchar(20)      | YES  |     | NULL    |       |
++----------+------------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> alter table emp change nickname username Varchar(30) comment "用户名";
+ERROR 1054 (42S22): Unknown column 'nickname' in 'emp'
+mysql> alter table emp drop username;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp
+    -> ;
++--------+------------------+------+-----+---------+-------+
+| Field  | Type             | Null | Key | Default | Extra |
++--------+------------------+------+-----+---------+-------+
+| id     | int unsigned     | YES  |     | NULL    |       |
+| workno | varchar(10)      | YES  |     | NULL    |       |
+| name   | varchar(10)      | YES  |     | NULL    |       |
+| gender | char(1)          | YES  |     | NULL    |       |
+| age    | tinyint unsigned | YES  |     | NULL    |       |
+| idcard | char(18)         | YES  |     | NULL    |       |
+| time   | date             | YES  |     | NULL    |       |
++--------+------------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> alter table emp rename to employee;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc emplyee;
+ERROR 1146 (42S02): Table 'canlu.emplyee' doesn't exist
+mysql> desc employee;
++--------+------------------+------+-----+---------+-------+
+| Field  | Type             | Null | Key | Default | Extra |
++--------+------------------+------+-----+---------+-------+
+| id     | int unsigned     | YES  |     | NULL    |       |
+| workno | varchar(10)      | YES  |     | NULL    |       |
+| name   | varchar(10)      | YES  |     | NULL    |       |
+| gender | char(1)          | YES  |     | NULL    |       |
+| age    | tinyint unsigned | YES  |     | NULL    |       |
+| idcard | char(18)         | YES  |     | NULL    |       |
+| time   | date             | YES  |     | NULL    |       |
++--------+------------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
++-----------------+
+| Tables_in_canlu |
++-----------------+
+| employee        |
+| tb_user         |
++-----------------+
+2 rows in set (0.00 sec)
+
+mysql> drop table tb_user;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_canlu |
++-----------------+
+| employee        |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> truncate table emploee;
+ERROR 1146 (42S02): Table 'canlu.emploee' doesn't exist
+mysql> truncate table employee;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_canlu |
++-----------------+
+| employee        |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql>
