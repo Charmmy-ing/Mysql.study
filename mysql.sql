@@ -1,0 +1,35 @@
+insert into employee(id, workno, name, gender, age, idcard, time) VALUES (1,'1','canlu','男',19,'123321321ddd123132','2026.8.24');
+
+# select * from employee;
+insert into employee values (2,'2','liuyu','男',19,'123321321ddb123132','2026.8.24');
+# select *from employee;
+update employee set name = 'canlulu',gender='女'where id=1;
+# select * from employee;
+# update employee set name='canlu',id=2;
+
+# select * from employee;
+# delete from employee where workno=2;
+select * from employee;
+select  * from employee;
+# update employee set name=null;
+# select * from employee;
+# delete from employee;
+# select * from employee;
+select name from employee;
+select distinct name from  employee;
+select distinct name as "名字"from employee;
+select * from employee where age<5;
+select name from employee where age>1;
+select name from employee where age between 10 and 90;
+select name from employee where age>5&&gender='女';
+select * from employee;
+update employee set idcard='1231231231321231x' where id=1;
+select name from employee where idcard like '%x';
+select name from employee where id in(1,3,50);
+# null dosent take part in select;
+select count(id) from employee;
+select  avg(age) from employee;
+select max(id) from employee;
+select  min(id) from employee;
+select  sum(age) from employee;
+select  count(name) from employee where idcard like '%x';
