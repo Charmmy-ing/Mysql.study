@@ -1,0 +1,16 @@
+select concat('Hello','World');
+select lower('Hello World');
+select  upper('Hello World');
+select trim('   Hello  ');
+SELECT LPAD('hello',10,'-');
+select  rpad('hi',10,'-');
+select substring('HELLO',1,9);
+update employee set name=lpad(name,6,'-');
+desc employee;
+select id from employee;
+select ceil(1.8);
+select floor(1.99);
+select mod(4,3);
+select rand();
+select round(5.555555,2);
+select lpad(round(rand()*1000000,0),6,'0');
