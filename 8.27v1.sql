@@ -27,4 +27,15 @@ select if(false,'ok','no');
 select ifnull('ok','no');
 select  ifnull(null,'no');
 select name ,(case id when 1 then'one'else 'two'end)from employee;
-create table
+create table user(
+    id tinyint primary key auto_increment comment '编号',
+    name varchar(5) not null unique comment '名字',
+    age tinyint check ( age>0&&age<150 ) comment '年龄',
+    status char(1) default '1' comment '账户状态'
+) comment'平台用户表';
+desc user;
+insert into user (name,age,status) values ('om',49,'1'),('YO',19,'1');
+select * from user;
+alter table employee add constraint fk_employee_dept_id foreign key (dept_id) references  dept(id) on update cascade on delete cascade ;
+alter table employee drop foreign key fk_employee_dept_id;
+alter table employee add constraint fk_employee_dept_id foreign key (dept_id) references  dept(id) on update cascade on delete set null ;
