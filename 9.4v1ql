@@ -1,0 +1,31 @@
+/*
+ 存储引擎
+ */
+  show create table user;
+show engines;
+create  table my_myisam
+(
+    id int
+
+) engine=MyISAM;
+create table memory(
+    name varchar(10)
+) engine=memory;
+show create table memory;
+create table InnoDB(
+    id int,
+    name varchar(10)
+) engine=innodb;
+show create table innodb;
+show index from  user;
+create index idx_user_name on user(name);
+show index from user;
+create unique index unidx on user(id);
+create index idx_all on user(id,name);
+drop index idx_user_name on user;
+show index from user;
+show global status like"com_______";
+show variables like "slow_qurry_log";
+select @@have_profiling;
+select @@profiling;
+set  profiling=1;

@@ -17,3 +17,6 @@ create table InnoDB(
     name varchar(10)
 ) engine=innodb;
 show create table innodb;
+/*索引
+  */
+
