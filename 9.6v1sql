@@ -1,0 +1,13 @@
+ create index aaa on user(id);
+create  index abc on user(id,name);
+drop index aaa on user;
+show index abc on user;
+select * from user;show global status like 'Com_______';
+show varibales...... ;
+show profiles;
+set profiling=1;
+select @@profiling;
+select * from user;
+show profiles;
+explain select * from user where id=1;
+
